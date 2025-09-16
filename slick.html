@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bike Carousel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .carousel-container {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel-header {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 20px;
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel-item {
+      min-width: 200px;
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    .carousel-item img {
+      width: 200px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.8);
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 1;
+    }
+
+    .arrow-left {
+      left: 0;
+    }
+
+    .arrow-right {
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carousel-header">Starting ₹70,348 | Set off on your next great ride</div>
+
+  <div class="carousel-container">
+    <button class="arrow arrow-left" onclick="scrollCarousel(-1)">&#8592;</button>
+    <div class="carousel" id="bikeCarousel">
+      <div class="carousel-item"><img src="bike1.png" alt="Bike 1"></div>
+      <div class="carousel-item"><img src="bike2.png" alt="Bike 2"></div>
+      <div class="carousel-item"><img src="bike3.png" alt="Bike 3"></div>
+      <div class="carousel-item"><img src="bike4.png" alt="Bike 4"></div>
+      <div class="carousel-item"><img src="bike5.png" alt="Bike 5"></div>
+      <!-- Add more as needed -->
+    </div>
+    <button class="arrow arrow-right" onclick="scrollCarousel(1)">&#8594;</button>
+  </div>
+
+  <script>
+    function scrollCarousel(direction) {
+      const carousel = document.getElementById('bikeCarousel');
+      const scrollAmount = 220; // Width of each item + gap
+      carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
